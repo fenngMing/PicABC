@@ -5,6 +5,7 @@ import random
 import logging
 from datetime import datetime
 
+DOMAIN_NAME = "http://www.yourdomain.com"
 IMG_DIR = "/path/to/your/image/dir"
 TOKEN = "YourToken"
 logging.basicConfig(filename="./log/run.log",filemode="a",format="%(asctime)s-%(name)s-%(levelname)s-%(message)s",level=logging.INFO)
@@ -54,7 +55,7 @@ def upload():
     logging.info("Upload %s to %s" %(fp.filename, new_path))
     with open(new_path, 'wb') as f:
         f.write(stream)
-    rsp = {"ret":0, "url":"http://mypic.fenngming.xyz/get/%s" %(rename)}
+    rsp = {"ret":0, "url":"%s/get/%s" %(DOMAIN_NAME, rename)}
     logging.info(str(rsp))
     return jsonify(rsp)
 

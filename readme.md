@@ -10,6 +10,7 @@
 - pip install -r requirements.txt
 
 ### 配置
+ - **DOMAIN_NAME**: your domain name
  - **IMG_DIR**: local dir for storaging you  images
  - **TOKEN**: your password for upload new images
 
