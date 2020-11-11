@@ -11,10 +11,6 @@ logging.basicConfig(filename="./log/run.log",filemode="a",format="%(asctime)s-%(
 
 app = Flask(__name__)
 
-@app.before_request
-def before_request():
-    logging.info("IP:%s Url:%s" %(request.remote_addr, request.url))
-
 @app.route('/get/<img_name>', methods=['GET'])
 def download(img_name):
     img_path = "%s/%s" %(IMG_DIR, img_name)
