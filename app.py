@@ -4,6 +4,7 @@ import base64
 import random
 import logging
 from datetime import datetime
+from werkzeug.contrib.fixers import ProxyFix
 
 DOMAIN_NAME = "http://www.yourdomain.com"
 IMG_DIR = "/path/to/your/image/dir"
@@ -11,6 +12,7 @@ TOKEN = "YourToken"
 logging.basicConfig(filename="./log/run.log",filemode="a",format="%(asctime)s-%(name)s-%(levelname)s-%(message)s",level=logging.INFO)
 
 app = Flask(__name__)
+app.wsgi_app = ProxyFix(app.wsgi_app)
 
 @app.route('/get/<img_name>', methods=['GET'])
 def download(img_name):
